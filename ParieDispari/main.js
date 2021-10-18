@@ -51,15 +51,27 @@ function pariDispari(number) {
 
 /* Scelgo tra pari e dispari */
 
-const makeYourChoice = prompt("Indovina se sarà un numero Pari o Dispari")
+let makeYourChoice = prompt("Indovina se sarà un numero Pari o Dispari");
 
 /* Controllo se l'utente scrive correttamente pari o dispari */
 
-if (makeYourChoice != "pari" && makeYourChoice != "dispari"){
-    alert("hai sbagliato a scrivere, digita la parola 'pari' o 'dispari'")
-} else {
-    makeYourChoice;
-}
+function checkYourChoice (makeYourChoice) {
+    
+    while (makeYourChoice != "pari" && makeYourChoice != "dispari"){
+   
+        alert("hai sbagliato a scrivere, digita la parola 'pari' o 'dispari'");
+        
+        let makeYourChoiceAgain = prompt("scegli pari o dispari");
+
+        if (makeYourChoiceAgain === "pari" || makeYourChoiceAgain === "dispari") {
+            makeYourChoice = makeYourChoiceAgain;
+        }
+    
+    }
+    return makeYourChoice;
+}    
+
+let makeYourChoiceCorrect = checkYourChoice(makeYourChoice);
 
 /* Genero numeor casuale per l'utente */
 
@@ -94,7 +106,7 @@ console.log(finalResult);
 
 /* Alert per l'utente per vedere se ha vinto o no */
 
-if (makeYourChoice === finalResult) {
+if (makeYourChoiceCorrect === finalResult) {
     alert("Complimenti! Hai Indovinato!")
 } else {
     alert("Mi dispiace, ma ha vinto il computer")
